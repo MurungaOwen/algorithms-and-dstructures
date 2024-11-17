@@ -8,9 +8,9 @@ def heapify(array: List, index: int, size: int):
     left = 2 * index + 1
     right = 2 * index + 2
 
-    if left < size and array[left] > array[largest]:  # Changed comparison here
+    if left < size and array[left] > array[largest]:
         largest = left
-    if right < size and array[right] > array[largest]:  # Changed comparison here
+    if right < size and array[right] > array[largest]:
         largest = right
     if largest != index:
         array[index], array[largest] = array[largest], array[index]
@@ -19,11 +19,13 @@ def heapify(array: List, index: int, size: int):
 def sort(array: List, size: int):
     print("array before: ", array)
     for i in range(size // 2 - 1, -1, -1):
+        # parent nodes are from half going backwards
         heapify(array, i, size)
         print("array as we heapify: ", array)
     print("final heap", array)
     
     for i in range(size - 1, 0, -1):
+        # 
         array[0], array[i] = array[i], array[0] 
         heapify(array, 0, i)
 
